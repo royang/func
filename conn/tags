@@ -1,0 +1,71 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALL	debug/Makefile	/^ALL = server client $/;"	m
+Accept	wrap/Wrapsock.c	/^int Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)$/;"	f
+Bind	wrap/Wrapsock.c	/^void Bind(int fd, const struct sockaddr *sa, socklen_t salen)$/;"	f
+CC	debug/Makefile	/^CC = gcc$/;"	m
+CLIENT_H_	tcp/client.h	9;"	d
+Cal_packetCheckSum	serial/serial_port.c	/^uint16_t Cal_packetCheckSum(uint8_t* buf,uint16_t len)$/;"	f
+Close	wrap/Wrapunix.c	/^void Close(int fd)$/;"	f
+Connect	wrap/Wrapsock.c	/^void Connect(int fd, const struct sockaddr *sa, socklen_t salen)$/;"	f
+DEV_NAME	serial/serial_port.c	20;"	d	file:
+FMLink_SerialPort_PacketParse	serial/serial_port.c	/^int FMLink_SerialPort_PacketParse(uint8_t *buf_tty_read,int len_tty_read,uint8_t *buf_parsed,int len_parsed)$/;"	f
+Fgets	wrap/Wrapunix.c	/^char *Fgets(char *ptr, int n, FILE *stream)$/;"	f
+Fork	wrap/Wrapunix.c	/^pid_t Fork(void)$/;"	f
+Fputs	wrap/Wrapunix.c	/^void Fputs(const char *ptr, FILE *stream)$/;"	f
+Getpeername	wrap/Wrapsock.c	/^void Getpeername(int fd, struct sockaddr *sa, socklen_t *salenptr)$/;"	f
+Getsockname	wrap/Wrapsock.c	/^void Getsockname(int fd, struct sockaddr *sa, socklen_t *salenptr)$/;"	f
+Inet_ntop	wrap/Wrapsock.c	/^const char *Inet_ntop(int fd, void *src, char *dst, socklen_t size)$/;"	f
+Inet_pton	wrap/Wrapsock.c	/^void Inet_pton(int family, const char *src, void *dst)$/;"	f
+LIBS	debug/Makefile	/^LIBS = -lpthread -lm$/;"	m
+LINK_MAX_LEN	serial/serial_port.c	18;"	d	file:
+LINK_PAYLOAD_MAX_LEN	serial/serial_port.h	4;"	d
+Listen	wrap/Wrapsock.c	/^void Listen(int fd, int backlog)$/;"	f
+MAXLINE	tcp/client.c	13;"	d	file:
+MAXLINE	tcp/server.c	25;"	d	file:
+MAXLINE	udp/client.c	13;"	d	file:
+MAXLINE	udp/client_bak.c	14;"	d	file:
+MAXLINE	udp/server.c	19;"	d	file:
+Read	wrap/Wrapunix.c	/^ssize_t Read(int fd, void *vptr, size_t maxlen)$/;"	f
+Recvfrom	wrap/Wrapsock.c	/^ssize_t Recvfrom(int fd, void *ptr, size_t nbytes, int flags, struct sockaddr *sa, socklen_t *salenptr)$/;"	f
+SERVER_H_	tcp/server.h	9;"	d
+SERVER_IP	udp/client_bak.c	16;"	d	file:
+SERVER_PORT	udp/client_bak.c	17;"	d	file:
+Sendto	wrap/Wrapsock.c	/^void Sendto(int fd, const void *ptr, size_t nbytes, int flags, const struct sockaddr *sa, socklen_t salen)$/;"	f
+Sigfunc	wrap/Wrapunix.h	/^typedef	void	Sigfunc(int);	\/* for signal handlers *\/$/;"	t
+Signal	wrap/Wrapunix.c	/^Sigfunc * Signal(int signo, Sigfunc *func)$/;"	f
+Socket	wrap/Wrapsock.c	/^int Socket(int family, int type, int protocol)$/;"	f
+USART_COM_RX_BUF_SIZE	serial/serial_port.c	15;"	d	file:
+USART_DEBUG_RX_BUF_SIZE	serial/serial_port.c	17;"	d	file:
+Write	wrap/Wrapunix.c	/^void Write(int fd, void *ptr, size_t nbytes)$/;"	f
+Writen	wrap/Wrapunix.c	/^ssize_t Writen(int fd, const void * vptr, size_t n)$/;"	f
+_SERIAL_PORT_H_	serial/serial_port.h	2;"	d
+_WRAPSOCK_H_	wrap/Wrapsock.h	2;"	d
+_WRAPUNIX_H_	wrap/Wrapunix.h	2;"	d
+client_heartbeat	udp/client_bak.c	/^void *client_heartbeat(void *arg)$/;"	f
+connfd	udp/client_bak.c	/^int connfd;$/;"	v
+debug_packet_frame_parse_failed_cnt	serial/serial_port.c	/^uint32_t debug_packet_frame_parse_failed_cnt = 0,debug_packet_frame_parse_succed_cnt=0;$/;"	v
+debug_packet_frame_parse_succed_cnt	serial/serial_port.c	/^uint32_t debug_packet_frame_parse_failed_cnt = 0,debug_packet_frame_parse_succed_cnt=0;$/;"	v
+driver_usart_packetFrameParse	serial/serial_port.c	/^int8_t driver_usart_packetFrameParse(uint8_t* buf,uint16_t* index_read,uint16_t* index_write,uint8_t source)$/;"	f
+echo_client	tcp/client.c	/^void echo_client(FILE *fp,int sockfd)$/;"	f
+echo_server	tcp/server.c	/^void echo_server(void* connfd)$/;"	f
+main	tcp/client.c	/^int main(int argc, char **argv)$/;"	f
+main	tcp/server.c	/^int main(int argc, char **argv)$/;"	f
+main	udp/client.c	/^int main(int argc, char **argv)$/;"	f
+main	udp/client_bak.c	/^int main(int argc, char **argv)$/;"	f
+main	udp/server.c	/^int main(int argc, char **argv)$/;"	f
+pthread_serial	serial/serial_port.c	/^void *pthread_serial(){$/;"	f
+serial_list_head	serial/serial_port.c	/^struct Node_t *serial_list_head_p,serial_list_head;$/;"	v	typeref:struct:
+serial_list_head_p	serial/serial_port.c	/^struct Node_t *serial_list_head_p,serial_list_head;$/;"	v	typeref:struct:Node_t
+serial_port_open	serial/serial_port.c	/^int serial_port_open(char* dev)$/;"	f
+sig_chld	tcp/server.c	/^void sig_chld(int signo)$/;"	f
+usart_debug_rx_buffer	serial/serial_port.c	/^unsigned char usart_debug_rx_buffer[USART_DEBUG_RX_BUF_SIZE]= {0};$/;"	v
+usart_debug_rx_buffer_read_index	serial/serial_port.c	/^uint16_t usart_debug_rx_buffer_read_index = 0;$/;"	v
+usart_debug_rx_buffer_write_index	serial/serial_port.c	/^uint16_t usart_debug_rx_buffer_write_index = 0;$/;"	v
+usart_rx_buf_read_index	serial/serial_port.c	/^uint16_t usart_rx_buf_write_index = 0,usart_rx_buf_read_index = 0;$/;"	v
+usart_rx_buf_write_index	serial/serial_port.c	/^uint16_t usart_rx_buf_write_index = 0,usart_rx_buf_read_index = 0;$/;"	v
+usart_rx_buffer	serial/serial_port.c	/^uint8_t usart_rx_buffer[USART_DEBUG_RX_BUF_SIZE] = {0};$/;"	v
