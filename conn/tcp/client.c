@@ -19,13 +19,6 @@ void echo_client(FILE *fp,int sockfd)
 	ssize_t n;
 
 	while(1) {
-//		if(Fgets(sendline, MAXLINE, fp) != NULL){
-//			Writen(sockfd, sendline, strlen(sendline)-1);
-//		}else{
-//			printf("get null string\n");
-//			exit(0);
-//		}
-		
 		n = Read(sockfd, recvline, MAXLINE);
 		
 		if(n){
@@ -42,8 +35,7 @@ void echo_client(FILE *fp,int sockfd)
 int main(int argc, char **argv)
 {
 	int 				connfd;
-	struct sockaddr_in 	servaddr;//,clieaddr;
-//	socklen_t     		len = sizeof(clieaddr);
+	struct sockaddr_in 	servaddr;
 
 	if(argc != 3)
 		printf("usage: client <IPaddress> <Port>");

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libMathFunctions,.a  CMakeFiles/MathFunctions,.dir/sip_math.c.o
+/usr/bin/ranlib libMathFunctions,.a

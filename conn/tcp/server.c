@@ -16,7 +16,7 @@
 
 #include <sys/types.h>
 #include <sys/wait.h>
-
+#include <pthread.h>
 #include <time.h>
 
 #include "../wrap/Wrapsock.h"
@@ -24,57 +24,59 @@
 
 #define MAXLINE	4096
 
-void sig_chld(int signo)
+void format_printf(char *buf, int len)
 {
-	pid_t pid;
-	int stat;
+	int i=0;
 
-//	while( (pid = waitpid(-1, &stat, WNOHANG) ) > 0)
-	while( (pid = wait(&stat) ) > 0)
-		printf("child %d terminated\n", pid);
-
-	return;
+	for(i=0; i<len; i++){
+		switch(buf[i]){
+			case '\n': printf("\\n\r\n");
+				break;
+			case '\r': printf("\\r");
+				break;
+			default:	printf("%c",buf[i]);
+				break;
+		}
+	}
 }
 
-void echo_server(void* connfd)
+void echo_server(int *fd)
 {
-	char buff[MAXLINE]="this is a demo" ;
+	char buff[MAXLINE];
 	int n;
 	struct sockaddr_in cliaddr;
 	socklen_t clilen = sizeof(cliaddr);
-	int *fd;
-	fd= connfd;
 	
 	while(1){
-//		n = Read(fd, buff, MAXLINE);
-//		if(n == 0){
-//			bzero(&cliaddr, sizeof(cliaddr));
-//			Getpeername(fd, (struct sockaddr *)&cliaddr, &clilen);
-//			printf("client %s:%d disconnected\n",inet_ntoa(cliaddr.sin_addr),ntohs(cliaddr.sin_port));
-//			Close(fd);
-//			exit(0);
-//		}
-		
-//		if(sscanf(buff, "%d %d", &arg1, &arg2) == 2)
-//			snprintf(buff, MAXLINE, "%d + %d = %d\n", arg1, arg2, arg1+arg2);
-//		else
-//			snprintf(buff, MAXLINE, "%s", "input error\n");
-		
-		Write(*fd, buff, strlen(buff));
-		sleep(1);
+		n = read(*fd, buff, MAXLINE);
+		if(n < 0){
+
+		}else if(n == 0){
+			bzero(&cliaddr, sizeof(cliaddr));
+			Getpeername(*fd, (struct sockaddr *)&cliaddr, &clilen);
+			printf("client %s:%d disconnected\n",inet_ntoa(cliaddr.sin_addr),ntohs(cliaddr.sin_port));
+			Close(*fd);
+			exit(0);
+		}else{
+			buff[n] = 0;
+			bzero(&cliaddr, sizeof(cliaddr));
+			Getpeername(*fd, (struct sockaddr *)&cliaddr, &clilen);
+			printf("client %s:%d : ", inet_ntoa(cliaddr.sin_addr), ntohs(cliaddr.sin_port));
+			format_printf(buff, n);
+	//		printf("%s\n",buff);
+		}
 	}
 
-	Close(fd);	
+	Close(*fd);	
 }
 
 
 int main(int argc, char **argv)
 {	
-	int 				listenfd,connfd,ret;	
-	struct sockaddr_in 	servaddr,cliaddr;	
+	int 				listenfd, connfd, ret;	
+	struct sockaddr_in 	servaddr, cliaddr;	
 	socklen_t 			salen = sizeof(cliaddr);	
 	pthread_t			tid;
-
 
 	listenfd = Socket(AF_INET, SOCK_STREAM, 0);	
 
@@ -86,8 +88,6 @@ int main(int argc, char **argv)
 
 	Listen(listenfd, 5);
 
-	Signal(SIGCHLD, sig_chld);
-
 	while(1){		
 		bzero(&cliaddr,sizeof(cliaddr));	
 		
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
 		printf("client %s:%hu connected\n",inet_ntoa(cliaddr.sin_addr),ntohs(cliaddr.sin_port));
 
 		
-		ret = pthread_create(&tid, NULL, (void *)&echo_server, (void *)&connfd);
+		ret = pthread_create(&tid, NULL, &echo_server, &connfd);
 		if(ret < 0){
 			perror("thread create");
 			Close(connfd);

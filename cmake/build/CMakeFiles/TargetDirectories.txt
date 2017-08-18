@@ -1,0 +1,2 @@
+/home/roy/Documents/test/cmake/build/MathFunc/CMakeFiles/MathFunctions.dir
+/home/roy/Documents/test/cmake/build/CMakeFiles/hello.dir

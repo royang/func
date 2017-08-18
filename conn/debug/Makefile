@@ -21,7 +21,7 @@ ALL = server client
 
 all : $(ALL)
 
-%.o : ../udp/%.c
+%.o : ../tcp/%.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 %.o : ../wrap/%.c
