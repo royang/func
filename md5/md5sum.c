@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include <openssl/md5.h>
+#include <md5.h>
+#include <dirent.h>
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,8 @@ int main(int argc, char *argv[])
 	int data_fd;
 	int nread;
 	int i;
+	DIR *dir;
+	
 
 	if ( argc != 2)
 	{

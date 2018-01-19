@@ -4,7 +4,8 @@ OBJ = md5sum.o
 CFLAGS += -Wall
 LIBS = -lcrypto
 
-CC = gcc
+#CROSS = /home/roy/link/lsdk/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/mips-linux-uclibc-
+CC = $(CROSS)gcc
 
 all : md5
 
